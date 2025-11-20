@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\BukuController;
 use App\Http\Controllers\API\KategoriBukuController;
 
 Route::post('/login', [AuthController::class, 'login'])->name('login')->middleware('throttle:10,1');
@@ -12,4 +13,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // kategori buku
     Route::apiResource('kategori', KategoriBukuController::class);
+
+    // buku
+    Route::apiResource('buku', BukuController::class);
 });
