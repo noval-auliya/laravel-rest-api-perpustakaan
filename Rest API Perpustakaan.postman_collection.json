@@ -1,0 +1,686 @@
+{
+	"info": {
+		"_postman_id": "9efee2ff-78d1-4207-b1b7-11fb6756ac3c",
+		"name": "Rest API Perpustakaan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8770003",
+		"_collection_link": "https://noval-project.postman.co/workspace/My-Workspace~e98997ee-8f26-46b0-8b46-d3d4e34b1813/collection/8770003-9efee2ff-78d1-4207-b1b7-11fb6756ac3c?action=share&source=collection_link&creator=8770003"
+	},
+	"item": [
+		{
+			"name": "1. Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@perpus.test\",\r\n    \"password\": \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\":\"Buddi\",\r\n  \"email\":\"budid@example.com\",\r\n  \"password\":\"secret123\",\r\n  \"password_confirmation\":\"secret123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. Kategori Buku",
+			"item": [
+				{
+					"name": "Index (Tampil Semua)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/kategori",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"kategori"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update (Ubah)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nama\": \"Teknologi Informasi\",\r\n    \"keterangan\": \"Kategori untuk semua buku IT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/kategori/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"kategori",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Destroy (Hapus)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/kategori/6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"kategori",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show (Detail)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/kategori/6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"kategori",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store (Simpan)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nama\": \"Fiksi\",\r\n    \"keterangan\": \"Kategori buku-buku novel dan cerita\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/kategori",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"kategori"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Buku",
+			"item": [
+				{
+					"name": "Index (Tampil Semua)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/buku",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"buku"
+							]
+						},
+						"description": "**/api/buku?per-page=10&page=2**"
+					},
+					"response": []
+				},
+				{
+					"name": "Update (Ubah)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"kategori_buku_id\": 2,\r\n    \"judul\": \"Laravel Expert Editiosn\",\r\n    \"pengarang\": \"Andi Pratama\",\r\n    \"penerbit\": \"Penerbit Jaya\",\r\n    \"isbn\": \"9876543210000\",\r\n    \"stok\": 5,\r\n    \"deskripsi\": \"Update isi buku terbaru\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/buku/21",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"buku",
+								"21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Destroy (Hapus)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/buku/21",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"buku",
+								"21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show (Detail)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/buku/21",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"buku",
+								"21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store (Simpan)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"kategori_buku_id\": 1,\r\n    \"judul\": \"Belajar Laravel 12\",\r\n    \"pengarang\": \"Budi Setiawan\",\r\n    \"penerbit\": \"Gramedia\",\r\n    \"isbn\": \"1234567890123\",\r\n    \"stok\": 7,\r\n    \"deskripsi\": \"Buku panduan lengkap Laravel 12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/buku",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"buku"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4. Peminjaman",
+			"item": [
+				{
+					"name": "Peminjaman",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"buku_id\": 4,\r\n    \"tanggal_kembali_rencana\": \"2025-11-20\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/peminjaman",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"peminjaman"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "5. Pengembalian",
+			"item": [
+				{
+					"name": "Pengembalian",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/peminjaman/12/kembali",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"peminjaman",
+								"12",
+								"kembali"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "6. Daftar Buku yang Dipinjam",
+			"item": [
+				{
+					"name": "Show (Detail)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/peminjaman/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"peminjaman",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Index (Tampil Semua)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/peminjaman",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"peminjaman"
+							]
+						},
+						"description": "**/api/peminjaman?per-page=10&page=2**"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": ""
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
